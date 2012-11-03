@@ -1,4 +1,4 @@
-# Enova Conquest
+# Tile Conquest
 
 A board game, played similar to Risk, but wth the following goals:
 
