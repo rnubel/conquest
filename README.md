@@ -31,7 +31,7 @@ Castle tiles produce one unit per turn.
     <td></td> <td>X</td> <td></td> <td>X</td> <td></td>
   </tr>
   <tr>
-    <td></td> <td></td> <td></td> <td></td> <td></td>
+    <td></td> <td></td> <td>&nbsp;</td> <td></td> <td></td>
   </tr>
   <tr>
     <td></td> <td>X</td> <td></td> <td>X</td> <td></td>
