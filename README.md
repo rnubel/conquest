@@ -14,14 +14,12 @@ Considerations:
 
 ## Rules
 
+### Game board
 The board is divided into square tiles, the size of the board being proportional to the number of players. Each tile can be either:
 
 * Open
 * Impassable
 * Castle
-
-Each tile, except for impassable tiles, is owned by whichever player either currently has units on the tile or who last did. 
-Castle tiles produce one unit per turn.
 
 <table>
   <tr>
@@ -40,3 +38,9 @@ Castle tiles produce one unit per turn.
     <td>C</td> <td></td> <td></td> <td></td> <td>C</td>
   </tr>
 </table>
+
+### Game play
+* Each tile, except for impassable tiles, is owned by whichever player either currently has units on the tile or who last did. 
+* Players start out with 2 units on a single Castle tile.
+* Castle tiles produce one unit per turn, at the beginning of the turn.
+* Players can set one action per each tile that they own.
