@@ -40,6 +40,7 @@ The board is divided into square tiles, the size of the board being proportional
 </table>
 
 ### Gameplay
+
 * Each tile, except for impassable tiles, is owned by whichever player either currently has units on the tile or who last did. 
 * Players start out with 2 units on a single Castle tile.
 * Castle tiles produce one unit per turn, at the beginning of the turn.
@@ -47,6 +48,7 @@ The board is divided into square tiles, the size of the board being proportional
 * Players can either **move** units, which will initiate an attack if into another player's territory, order units to **defend**, or order units to **support** surrounding territories.
 
 ### Battle
+
 In an attack, each player's combat strength is: (number of units) + (number of **support**ing units in adjacent territories) + (number of **defend**ing units in territory, if being attacked)
 
 To decide the outcome of the battle, we add some chance into the mix. Let the **battle variance** be 25% of the total combat strength of both players. Then, compute each player's battle score as `(combat strength) + rand(1..battle variance)`. The player with the higher battle score wins the battle.
@@ -54,6 +56,7 @@ To decide the outcome of the battle, we add some chance into the mix. Let the **
 Half (rounded down) of the loser's retreating units are killed, and half retreat evenly to adjacent friendly or unowned tiles. If no safe place is available to retreat to, the units are routed and lost.
 
 #### Example
+
 Player 1 has 10 units in tile X and attacks tile Y, which has 4 units and is owned by Player 2. Those 8 units were defending, and an adjacent tile Z has 2 units supporting Player 2.
 
 Player 1's combat strength is: `10 + 0 + 0 = 10`
@@ -65,3 +68,12 @@ The battle variance is: `.25 * (10 + 10) = 5`
 So, both player's battle scores are `10 + rand(5)`. Each player has an equal chance of winning, but Player 1 ends up with 13 versus Player 2's 12.
 
 Player 2 loses 2 units. The remaining 2 units retreat to tile Z.
+
+
+## Implementation
+
+The game server will run as a web server, controlled by a script which ends turns, executes actions, and starts a new turn on a periodic cycle.
+
+Players will be automated bots that poll the server periodically. The response will always be the status as of a particular turn; the bots should record that turn ID and only send new actions if it's a new turn. To send actions, players can send POST requests with lists of actions to the server.
+
+A turn will remain open for a fixed time, perhaps 5 seconds. At the end of that period, the server ends the turn and no more actions are recorded. Then, it executes each action in some order (possibly from least powerful player to most, or the oppositve). If an action has become outdated (say the units in question were destroyed), the action is ignored.
