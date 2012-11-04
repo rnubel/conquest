@@ -57,7 +57,7 @@ Half (rounded down) of the loser's retreating units are killed, and half retreat
 
 #### Example
 
-Player 1 has 10 units in tile X and attacks tile Y, which has 4 units and is owned by Player 2. Those 8 units were defending, and an adjacent tile Z has 2 units supporting Player 2.
+Player 1 has 10 units in tile X and attacks tile Y, which has 4 units and is owned by Player 2. Those 4 units were defending, and an adjacent tile Z has 2 units supporting Player 2.
 
 Player 1's combat strength is: `10 + 0 + 0 = 10`
 
